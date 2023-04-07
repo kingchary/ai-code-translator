@@ -20,10 +20,10 @@ export default function Home() {
   const handleTranslate = async () => {
     const maxCodeLength = model === 'gpt-3.5-turbo' ? 6000 : 12000;
 
-    if (!apiKey) {
-      alert('Please enter an API key.');
-      return;
-    }
+    // if (!apiKey) {
+    //   alert('Please enter an API key.');
+    //   return;
+    // }
 
     if (inputLanguage === outputLanguage) {
       alert('Please select different languages.');
@@ -55,7 +55,7 @@ export default function Home() {
       apiKey,
     };
 
-    const response = await fetch('/api/translate', {
+    const response = await fetch('/code-translate/api/translate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -107,11 +107,11 @@ export default function Home() {
     document.body.removeChild(el);
   };
 
-  const handleApiKeyChange = (value: string) => {
-    setApiKey(value);
+  // const handleApiKeyChange = (value: string) => {
+  //   setApiKey(value);
 
-    localStorage.setItem('apiKey', value);
-  };
+  //   localStorage.setItem('apiKey', value);
+  // };
 
   useEffect(() => {
     if (hasTranslated) {
@@ -143,9 +143,9 @@ export default function Home() {
           <div className="text-4xl font-bold">AI Code Translator</div>
         </div>
 
-        <div className="mt-6 text-center text-sm">
+        {/* <div className="mt-6 text-center text-sm">
           <APIKeyInput apiKey={apiKey} onChange={handleApiKeyChange} />
-        </div>
+        </div> */}
 
         <div className="mt-2 flex items-center space-x-2">
           <ModelSelect model={model} onChange={(value) => setModel(value)} />
